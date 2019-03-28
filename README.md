@@ -7,3 +7,5 @@ Event Detection and Domain Adaptation with Convolutional Neural Networks论文�
 只做了在dev上，dev上原则选取效果最好的，然后保存模型，测试test（未做），与论文f1大概差距5%。
 思考问题可能存在数据划分上（给的别的论文作者的划分，与原论文划分有出入！），其次两个以上的trigger词没有进行特别处理。
 
+
+顺便吐槽一句 真的好坑
