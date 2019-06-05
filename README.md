@@ -1,7 +1,7 @@
 # Event-Detection---Convolutional-Neural-Networks
 Event Detection and Domain Adaptation with Convolutional Neural Networks论文复现
 
-------2009.6.5更新--------
+------2019.6.5更新--------
 
 加入test部分，引入ranking loss，增加最终处理好的dev整个样本。
 
