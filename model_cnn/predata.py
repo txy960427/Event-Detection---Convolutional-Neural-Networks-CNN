@@ -7,9 +7,9 @@ def getseandlabels(file_path):
     entity=[]
     for i in range(len(se_trigger_entity)-2):
         if (i)%3==0:
-            ses.append(se_trigger_entity[i].strip().split(','))
-            trigger.append(se_trigger_entity[i+1].strip().split(','))
-            entity.append(se_trigger_entity[i+2].strip().split(','))
+            ses.append(se_trigger_entity[i].strip().split(' '))
+            trigger.append(se_trigger_entity[i+1].strip().split(' '))
+            entity.append(se_trigger_entity[i+2].strip().split(' '))
     return  ses,trigger,entity
 
 def getall(text,trigger_labels,entity_labels):
@@ -36,7 +36,7 @@ def getall(text,trigger_labels,entity_labels):
             trs.append(labels34)
             en=entity_labels[j][i-15:i+16]
             ens.append(en)
-            pos.append([15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15])
+            pos.append([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30])
         train_sequences.append(ses)
         train_labels.append(trs)
         train_entitys.append(ens)
@@ -64,12 +64,12 @@ def addnone(text,trigger,entity):
             tt_addnone.append('0')
         triggers_addnone.append(tt_addnone)
     for tt in entity:
-        tt_addnone=['0','0','0','0','0','0','0','0','0','0',
-                    '0','0','0','0','0']
+        tt_addnone=['14','14','14','14','14','14','14','14','14','14',
+                    '14','14','14','14','14']
         for ttt in tt:
             tt_addnone.append(ttt)
         for i in range(15):
-            tt_addnone.append('0')
+            tt_addnone.append('14')
         entitys_addnone.append(tt_addnone)
 
     return sentences_addnone,triggers_addnone,entitys_addnone
@@ -80,9 +80,9 @@ def predata():
    #What,does,that,have,to,do,with,the,war,in,Iraq,?
    #0,0,0,0,0,0,0,0,13,0,0,0
    # 0,0,0,0,0,0,0,0,0,0,2,0
-   train_sentences,train_trigger_labels,train_entity_labls=getseandlabels("../acedata/train.txt")
-   test_sentences, test_trigger_labels, test_entity_labls = getseandlabels("../acedata/test.txt")
-   dev_sentences,dev_trigger_labels, dev_entity_labls = getseandlabels("../acedata/dev.txt")
+   train_sentences,train_trigger_labels,train_entity_labls=getseandlabels("train_new.txt")
+   test_sentences, test_trigger_labels, test_entity_labls = getseandlabels("test_new.txt")
+   dev_sentences,dev_trigger_labels, dev_entity_labls = getseandlabels("dev_new.txt")
    print(len(train_sentences),len(test_sentences),len(dev_sentences))
    #for i in range(len(train_sentences)):
        #for j in range(len(train_sentences[i])):
@@ -114,6 +114,4 @@ def predata():
           train_positions,test_positions,dev_positions,\
           train_entitys,test_entitys,dev_entitys, \
           train_labels, test_labels, dev_labels
-
-
 
